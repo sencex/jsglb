@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>技术管理平台 内测版</title>
+    <link rel="icon" href="img/logoJSBC-red.png"/> 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/techinfoStyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Main Navigation-->
+    <header>
+        <!-- Navbar -->
+        <div class="container-fluid">
+            <nav class="navbar fixed-top navbar-expand-sm navbar-dark">          
+                <!-- Brand -->
+                <a class="navbar-brand" href="#"><img src="img/logoJSBC.png" class="img-fluid mx-4" alt="logo"><span class="font-weight-bold d-lg-inline-block d-none">江苏广电总台技术管理平台</span></a>     
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <i class="fa fa-home text-white"></i>
+                </button>
+
+                <div class="collapse navbar-collapse p-3" id="navbarToggler">
+                    <!-- Links -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                返回首页
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown d-xl-none d-block">
+                            <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">
+                                    <img src="img/project.png" width="20rem" /> 项目建设</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="img/tech.png" width="20rem" /> 技术资源</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="img/safebroadcast.png" width="20rem" /> 安播管理</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="img/innovation.png" width="20rem" /> 创新创优</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="img/person.png" width="20rem" /> 人员管理</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="img/knowledge.png" width="20rem" /> 知识共享</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown">
+                                <i class="fa fa-user-o"></i>
+                                <span class="clearfix d-none d-sm-inline-block"> User</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> 退出</a>
+                            </div>
+                        </li>
+                    </ul>    
+                </div> 
+            </nav>
+        </div>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main style="padding-top: 90px">
+        <div class="container-fluid">   
+            <div class="row pt-3">
+                <div class="col-2 d-xl-block d-none ml-3" id="slide-out">
+                    <div class="ml-4 pt-3 position-fixed">
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Project-img" class="icon-img"></div>
+                            <span>项目建设</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="TechRes-img" class="icon-img"></div>
+                            <span>技术资源</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Safe-img" class="icon-img"></div>
+                            <span>安播管理</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Inno-img" class="icon-img"></div>
+                            <span>创新创优</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Person-img" class="icon-img"></div>
+                            <span>人员信息</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Knowledge-img" class="icon-img"></div>
+                            <span>知识共享</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col mx-lg-3">
+                    <section>
+                        <!-- <div class="embed-responsive embed-responsive-4by3">
+                            <iframe class="embed-responsive-item" src="knowledgeBase/wiki.html" allowfullscreen></iframe>
+                        </div> -->
+                        <iframe src="knowledgeBase/empty.html" frameborder="0" marginheight="0" marginwidth="0" width="100%" scrolling="auto" height="800"></iframe>
+                    </section>
+                </div>
+            </div>            
+        </div>
+    </main>
+    <!--Main layout-->
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only navbar-dark fixed-bottom" style="background-color: rgb(224, 65, 56);  ">
+        <!--Copyright-->
+        <div class="footer-copyright py-3 text-center text-white">
+            <div class="container-fluid">
+                © 2018 
+                <a href="https://github.com/njXuanX" class="text-white">njXuanX</a>
+            </div>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+                        
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script>
+        // SideNav Initialization
+        $(".button-collapse").on("click",function(){
+			$("#slide-out").toggle(100);
+		});
+    </script>
+</body>
+</html>
