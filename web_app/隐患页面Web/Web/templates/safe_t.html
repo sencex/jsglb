@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>技术管理平台 内测版</title>
+    <link rel="icon" href="static/img/JSBC.ico"/> 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('.static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Bootstrap table CSS (optional)-->
+    <link href="{{url_for('.static', filename='css/bootstrap-table.min.css')}}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{{url_for('.static', filename='css/techinfoStyle.css')}}" rel="stylesheet">
+</head>
+
+<body>
+    <!--Main Navigation-->
+    <header>
+        <!-- Navbar -->
+        <div class="container-fluid">
+            <nav class="navbar fixed-top navbar-expand-sm navbar-dark">          
+                <!-- Brand -->
+                <a class="navbar-brand" href="#"><img src="static/img/logoJSBC.png" class="img-fluid mx-4" alt="logo"><span class="font-weight-bold d-lg-inline-block d-none">江苏广电总台技术管理平台</span></a>     
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <i class="fa fa-home text-white"></i>
+                </button>
+
+                <div class="collapse navbar-collapse p-3" id="navbarToggler">
+                    <!-- Links -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                返回首页
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown d-xl-none d-block">
+                            <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">
+                                    <img src="static/img/project.png" width="20rem" /> 项目建设</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="static/img/tech.png" width="20rem" /> 技术资源</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="static/img/safebroadcast.png" width="20rem" /> 安播管理</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="static/img/innovation.png" width="20rem" /> 创新创优</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="static/img/person.png" width="20rem" /> 人员管理</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <img src="static/img/knowledge.png" width="20rem" /> 知识共享</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown">
+                                <i class="fa fa-user-o"></i>
+                                <span class="clearfix d-none d-sm-inline-block"> User</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> 退出</a>
+                            </div>
+                        </li>
+                    </ul>    
+                </div> 
+            </nav>
+        </div>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+            
+    <!--Main layout-->
+    <main style="padding-top: 90px" class="pb-5">
+        <div class="container-fluid">   
+            <!--Section: Modals-->
+            <section>
+                <!--Modal: modalNewslist-->
+                <div class="modal fade" id="tableModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+                            <!--Header-->
+                            <div class="modal-header">
+                                <p class="heading h3">隐患详情</p>
+                                <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--Body-->
+                            <div class="modal-body">
+                                <p id="modal-table-content">显示隐患（ID）详情</p>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!--Modal: modalConfirmDelete-->
+            </section>
+            <!--Section: Modals-->
+
+            <div class="row pt-3">
+                <div class="col-2 d-xl-block d-none ml-3" id="slide-out">
+                    <div class="ml-4 pt-3 position-fixed">
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Project-img" class="icon-img"></div>
+                            <span>项目建设</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="TechRes-img" class="icon-img"></div>
+                            <span>技术资源</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Safe-img" class="icon-img"></div>
+                            <span>安播管理</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Inno-img" class="icon-img"></div>
+                            <span>创新创优</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Person-img" class="icon-img"></div>
+                            <span>人员信息</span>
+                        </a>
+                        <div class="w-100 my-2"></div>
+                        <a class="side-icon d-flex justify-content-center flex-wrap" href="#" role="button" style="text-decoration: none;">
+                            <div id="Knowledge-img" class="icon-img"></div>
+                            <span>知识共享</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">        
+                    <nav class="nav justify-content-start position-fixed flex-column flex-sm-row nav-pills ml-1" style="z-index: 10; background-color: rgba(10, 10, 10, 0.5); "> 
+                        <a class="flex-sm-fill text-sm-center nav-link text-white font-weight-bold" href="#">总体情况</a>
+                        <a class="flex-sm-fill text-sm-center nav-link text-white font-weight-bold" href="#section-safe">安全隐患</a>
+                        <a class="flex-sm-fill text-sm-center nav-link text-white font-weight-bold" href="#">信息安全</a>
+                    </nav>        
+                    <!-- <p id="test"></p> -->
+                    <section class="mx-lg-4 d-flex justify-content-center flex-wrap">
+                        <h3 class="text-center font-weight-bold" style="margin-bottom: 0rem;" id="section-safe">安全隐患事件列表</h3>
+                        <!-- 因toolbar使用小图标，对bootstrap-table.js里search增加了form-control-sm mt-1，toolbar里的元素随之做了margin和padding的调整。 -->
+                        <div id="toolbar-safe" class="mt-1 d-sm-block d-none">
+                            <form class="form-inline">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text">统计年份</label>
+                                    </div>
+                                    <select class="custom-select custom-select-sm" id="toolbar-safe-year">
+                                        <option value=0 selected>全部</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                    </select>
+                                </div>
+                                <div class="input-group input-group-sm ml-2">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text">隐患性质</label>
+                                    </div>
+                                    <select class="custom-select custom-select-sm" id="toolbar-safe-attr">
+                                        <option value=0 selected>全部</option>
+                                        <option value="责任事故：人为责任">责任事故：人为责任</option>
+                                        <option value="责任事故：管理责任">责任事故：管理责任</option>
+                                    </select>
+                                </div>
+                                <div class="input-group input-group-sm ml-2">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text">责任部门</label>
+                                    </div>
+                                    <select class="custom-select custom-select-sm" id="toolbar-safe-dept">
+                                        <option value=0 selected>全部</option>
+                                        <option value="卫视频道">卫视频道</option>
+                                        <option value="公共·新闻频道">公共·新闻频道</option>
+                                        <option value="城市频道">城市频道</option>
+                                        <option value="影视频道">影视频道</option>
+                                        <option value="国际频道">国际频道</option>
+                                        <option value="体育休闲频道">体育休闲频道</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <table id="table-safe" class="pt-1"></table>
+                        <div class="row">
+                            <!-- pie chart -->
+                            <div class="col">
+                                <div id="toolbar-safe-chart-pie">
+                                    <div class="form-inline">
+                                        <h5 class="font-weight-bold mt-1">隐患分析</h5>
+                                        <div class="input-group input-group-sm ml-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text">统计年份</label>
+                                            </div>
+                                            <select class="custom-select custom-select-sm" id="toolbar-safe-chart-pie-year">
+                                                <option value=0 selected>全部</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group input-group-sm ml-2">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text">维度选择</label>
+                                            </div>
+                                            <select class="custom-select custom-select-sm" id="toolbar-safe-chart-pie-col">
+                                                <option value="channal" selected>影响频道、频率</option>
+                                                <option value="type">隐患类型</option>
+                                                <option value="attr">隐患性质</option>
+                                                <option value="dept">责任部门</option>
+                                            </select>
+                                        </div>       
+                                        <button class="btn btn-outline-secondary btn-sm ml-2" id="chart1-confirm">确定</button>                                    
+                                    </div>
+                                </div>
+                                <div class="mx-auto" id="chart1" style="width: 45rem; height:300px;"></div>
+                            </div>
+                            <!-- bar chart -->
+                            <div class="col">                              
+                                <div id="toolbar-safe-chart-bar">
+                                    <div class="form-inline">
+                                        <h5 class="font-weight-bold mt-1">月度隐患发生情况</h5>
+                                        <div class="input-group input-group-sm ml-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text">统计年份</label>
+                                            </div>
+                                            <select class="custom-select custom-select-sm" id="toolbar-safe-chart-bar-year">
+                                                <option value=0>全部</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018" selected>2018</option>
+                                            </select>
+                                        </div>      
+                                        <button class="btn btn-outline-secondary btn-sm ml-2" id="chart2-confirm">确定</button>                     
+                                    </div>                                   
+                                </div>
+                                <div class="mx-auto" id="chart2" style="width: 45rem; height:300px;"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>            
+        </div>
+    </main>
+    <!--Main layout-->
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only navbar-dark fixed-bottom" style="background-color: rgb(224, 65, 56);">
+        <!--Copyright-->
+        <div class="footer-copyright py-3 text-center text-white">
+            <div class="container-fluid">
+                © 2018 
+                <a href="https://github.com/njXuanX" class="text-white">njXuanX</a>
+            </div>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+                        
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{url_for('.static', filename='js/popper.min.js')}}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{url_for('.static', filename='js/bootstrap.min.js')}}"></script>
+    <!-- Bootstrap table JavaScript (optional)-->
+    <script src="static/js/bootstrap-table.min.js"></script>
+    <script src="static/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="static/js/bootstrap-table-mobile.js"></script>
+    <!-- pyecharts JavaScript (optional)-->
+    {% for jsfile_name in script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+    <!-- script for test -->
+    <!-- <script>
+        {% for jsfile_name in script_list %} 
+            console.log("{{ host }}/{{ jsfile_name }}.js");
+		{% endfor %} 
+    </script> -->
+    <!-- script for modal -->
+    <script>
+        $('#tableModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('id') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('#modal-table-content').text('显示隐患（ID：' + recipient + '）详情' )
+            })
+        window.operateEvents = {
+            //'click .fa-search': function (e, value, row, index) {
+            //    alert('You click id: ' + JSON.stringify(value));
+            //}
+        };
+    </script>
+    <!-- script for tabel -->
+    <script>
+        var $table = $('#table'),
+            $button = $('#button'),
+            $tableSafe = $('#table-safe');
+
+        $table.bootstrapTable({
+            url: 'json/data1.json',
+            columns: [{
+                field: 'id',
+                title: 'Item ID',
+                sortable: true
+            }, {
+                field: 'name',
+                title: 'Item Name',
+                width: '50%'
+            }, {
+                field: 'price',
+                title: 'Item Price',
+            }, {
+                field: 'amount',
+                title: 'Item Amount',
+                sortable: true
+            }],
+            //height: '20rem', 破坏自适应
+            search: true,
+            // iconSize: 'sm',
+            searchOnEnterKey: true,
+            striped: true,
+            pagination: true,
+            //onlyInfoPagination: true,
+            //showToggle: true,
+            //showColumns: true,
+            showPaginationSwitch: true,
+            toolbar: '#toolbar',
+            //buttonsToolbar: '#buttons-toolbar',
+            rowStyle: function rowStyle(row, index) {
+                return {
+                    //classes: 'text-nowrap',
+                    css: {"color": "black", "font-size": ".8rem"}
+                };
+                },
+            mobileResponsive: true,
+            pageList: [5, 10, 25, 50, 100],
+            pageSize: 5
+        });
+
+        $(function () {
+            $button.click(function () {
+                $table.bootstrapTable('filterBy', {
+                    id: [1, 2, 3]
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $tableSafe.bootstrapTable({
+                //url: 'static/json/safePrepro.json',
+                url: '/data/tableSafe',
+                columns: [{
+                    field: 'date',
+                    title: '发生日期',
+                    halign: 'center',
+                    sortable: true
+                }, {
+                    field: 'channal',
+                    title: '影响频道、频率',
+                    halign: 'center'
+                }, {
+                    field: 'program',
+                    title: '影响节目',
+                    halign: 'center'
+                }, {
+                    field: 'type',
+                    title: '隐患类型',
+                    halign: 'center'
+                }, {
+                    field: 'reason',
+                    title: '隐患原因',
+                    halign: 'center'
+                }, {
+                    field: 'attr',
+                    title: '隐患性质',
+                    halign: 'center'
+                }, {
+                    field: 'dept',
+                    title: '责任部门',
+                    halign: 'center'
+                }, {
+                    field: 'handle',
+                    title: '处理措施',
+                    halign: 'center',
+                }, {
+                    field: 'id',
+                    title: '查看详情',
+                    halign: 'center',
+                    align: 'center',
+                    formatter: function detailFormatter(value, row, index) {
+                        return '<a data-toggle="modal" href="#tableModal" class="fa fa-search text-dark" data-id="' + value + '"></a>';
+                    },
+                    events: operateEvents,
+                }, {
+                    field: 'year',
+                    title: '年份',
+                    halign: 'center',
+                    visible: false
+                }],
+                //height: 300,
+                search: true,
+                searchOnEnterKey: true,
+                striped: true,
+                pagination: true,
+                showColumns: true,
+                showToggle: true,
+                toolbar: '#toolbar-safe',
+                mobileResponsive: true,
+                rowStyle: function rowStyle(row, index) {
+                    return {
+                        //classes: 'text-nowrap',
+                        css: { "color": "black", "font-size": ".8rem" }
+                    };
+                },
+                pageList: [5, 10, 25, 50, 100],
+                pageSize: 5,
+                buttonsClass: "btn btn-sm btn-outline-secondary",
+            });
+        });
+
+        //#tableSafe filter
+        $("div#toolbar-safe select").change(function(){
+            console.log($("#toolbar-safe-year").val());
+            // console.log($("#toolbar-safe-attr").val());
+            // console.log($("#toolbar-safe-dept").val());
+            var filterDict={
+                            year:$("#toolbar-safe-year").val(),
+                            attr:$("#toolbar-safe-attr").val(),
+                            dept: $("#toolbar-safe-dept").val()};
+            for (var key in filterDict) {
+                if (filterDict[key]==0){
+                    delete filterDict[key]
+                }        
+            }
+            console.log(filterDict);
+            $tableSafe.bootstrapTable('filterBy', filterDict);
+        });
+    </script>
+    <!-- script for chart -->
+    <script>
+        function drawChart(chartString) {
+            var myChart = echarts.init(document.getElementById(chartString), null);
+            myChart.showLoading(); // 显示加载动画
+            requestPath = '/data/'+ chartString;
+            $.get(requestPath).done(function (data) {
+                myChart.hideLoading(); // 隐藏加载动画
+                myChart.setOption(JSON.parse(data), true);    //json string 转字典
+                $("#test").text(data);
+            });
+        }
+
+        $(document).ready(function () {
+            drawChart('chart1');
+            drawChart('chart2');
+        });
+
+        //#pie filter
+        $("div#toolbar-safe-chart-pie select").change(function(){
+            console.log($("#toolbar-safe-chart-pie-year").val())
+            console.log($("#toolbar-safe-chart-pie-col").val())
+            var yearFilter = $("#toolbar-safe-chart-pie-year").val();
+            var colSel = $("#toolbar-safe-chart-pie-col").val()
+            $.post('/getPieSel', { yearFilter: yearFilter, colSel: colSel});
+            //drawChart('chart1');   //不能及时刷新，要下一次动作
+        });
+        $("#chart1-confirm").click(function(){
+            drawChart('chart1');
+        });
+
+        //#bar filter
+        $("div#toolbar-safe-chart-bar select").change(function(){
+            console.log($("#toolbar-safe-chart-bar-year").val())
+            var yearFilter2 = $("#toolbar-safe-chart-bar-year").val();
+            $.post('/getBarSel', { yearFilter2: yearFilter2});
+        });
+        $("#chart2-confirm").click(function(){
+            drawChart('chart2');
+        });
+    </script>
+</body>
+</html>
+
+

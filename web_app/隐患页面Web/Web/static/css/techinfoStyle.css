@@ -1,0 +1,85 @@
+.navbar{
+    /* height: 100px; */
+    background-image: url("../img/home_head.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: rgb(224, 65, 56);  
+}
+#slide-out{
+    background-image: url("../img/content_back2.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-attachment: fixed;
+}
+
+
+.side-icon{
+    /* cursor: pointer; 因是a元素所以不必要*/
+    width: 100px;
+    height: 90px;
+    /* 转换成元素才可加边框和背景 */
+    display: block;
+    background-color: rgba(0, 0, 0, 0.0);  
+    border: 1px solid #EAEAEA;
+    border-radius: 5px;
+}
+.side-icon:hover{
+    background-color: rgb(224, 65, 56);  
+}
+.side-icon:hover #Project-img{
+    background-image: url("../img/project-hover.png")
+}
+.side-icon:hover #TechRes-img{
+    background-image: url("../img/tech-hover.png")
+}
+.side-icon:hover #Safe-img
+{
+    background-image: url("../img/safebroadcast-hover.png");
+}
+.side-icon:hover #Inno-img{
+    background-image: url("../img/innovation-hover.png")
+}
+.side-icon:hover #Person-img{
+    background-image: url("../img/person-hover.png")
+}
+.side-icon:hover #Knowledge-img
+{
+    background-image: url("../img/knowledge-hover.png");
+}
+
+
+.icon-img{
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Project-img{
+    background-image: url("../img/project.png")
+}
+#TechRes-img{
+    background-image: url("../img/tech.png")
+}
+#Safe-img{
+    background-image: url("../img/safebroadcast.png")
+}
+#Inno-img{
+    background-image: url("../img/innovation.png")
+}
+#Person-img{
+    background-image: url("../img/person.png")
+}
+#Knowledge-img{
+    background-image: url("../img/knowledge.png")
+}
+
+
+
+.side-icon span {
+    padding-bottom: 0.4rem;
+    font-size: 15px;
+    color: #6E6E6E;
+}
+.side-icon:hover span {
+    color: rgb(255, 255, 255);
+}
